@@ -1,0 +1,80 @@
+const { Client, Intents } = require('discord.js-selfbot-v13');
+const client = new Client({
+  checkUpdate: false,
+  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+});
+
+client.on('ready', async () => {
+  console.log(`${client.user.username} is ready!`);
+});
+
+client.login('MTA2ODY0NjYzOTA0NjI1MDUwNg.G4-nRN.I0KiUU-nFI09jCsKBjl13lO_7t0BwTJU_OKeK4');
+
+const Discord = require("discord.js")
+const bot = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
+
+bot.on('ready', () => {
+  console.log(`${bot.user.username} is ready!`);
+});
+const { MessageActionRow, MessageSelectMenu } = require('discord.js');
+bot.login("MTA1NDQzNjY3NzYxNzIwNTI3MA.GvVZmT.9Mro71C95uBcgVveZ0HeWZxuk1dLnqfjUJwaPk");
+
+bot.on('channelCreate', (channel) => {
+  if (channel.name.startsWith('ticket')) {
+    const options = [
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: '3', value: '3' },
+      { label: '4', value: '4' },
+      { label: '5', value: '5' },
+      { label: '6', value: '6' },
+      { label: '7', value: '7' },
+    ];
+
+    const selectMenu = new MessageSelectMenu()
+      .setCustomId('ticket_select')
+      .setPlaceholder('Select an option')
+      .addOptions(options);
+
+    const row = new MessageActionRow().addComponents(selectMenu);
+
+    channel.send({ content: 'Please select an option:', components: [row] });
+  }
+});
+
+client.on('interactionCreate', (interaction) => {
+  if (interaction.isSelectMenu() && interaction.customId === 'ticket_select') {
+    const selectedOption = interaction.values[0];
+    let response = '';
+
+    // Determine the response based on the selected option
+    switch (selectedOption) {
+      case '1':
+        response = 'You selected option 1.';
+        break;
+      case '2':
+        response = 'You chose option 2.';
+        break;
+      case '3':
+        response = 'Option 3 is your selection.';
+        break;
+      case '4':
+        response = 'Option 4 it is!';
+        break;
+      case '5':
+        response = 'You picked option 5.';
+        break;
+      case '6':
+        response = 'Option 6, coming right up!';
+        break;
+      case '7':
+        response = 'Option 7 is your choice!';
+        break;
+      default:
+        response = 'Invalid option selected.';
+        break;
+    }
+
+    interaction.user.send(`${response}`);
+  }
+});
