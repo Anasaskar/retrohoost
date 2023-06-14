@@ -20,7 +20,7 @@ acc.on('ready', async () => {
   console.log(`${acc.user.username} is ready!`);
 });
 
-acc.login(process.env.token);
+acc.login(process.env.token1);
 
 
 
