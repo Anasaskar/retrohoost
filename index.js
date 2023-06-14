@@ -7,7 +7,7 @@ client.on('ready', () => {
   console.log(`${client.user.username} is ready!`);
 });
 
-client.login('MTA1NDQzNjY3NzYxNzIwNTI3MA.GvVZmT.9Mro71C95uBcgVveZ0HeWZxuk1dLnqfjUJwaPk');
+client.login(process.env.token);
 
 
 const { Client, Intents } = require('discord.js-selfbot-v13');
@@ -20,7 +20,7 @@ acc.on('ready', async () => {
   console.log(`${acc.user.username} is ready!`);
 });
 
-acc.login('MTA2ODY0NjYzOTA0NjI1MDUwNg.G4-nRN.I0KiUU-nFI09jCsKBjl13lO_7t0BwTJU_OKeK4');
+acc.login(process.env.token);
 
 
 
